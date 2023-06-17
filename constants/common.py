@@ -11,6 +11,6 @@ class CommonConstants:
     max_token_for_completion = 512
     temperature = 0.2
     openai_api_key = "OPENAI_API_KEY"
-    default_openai_api_key = "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"
+    default_openai_api_key = "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"
     n_results = 50
     proxy_address = 'http://127.0.0.1:10809'

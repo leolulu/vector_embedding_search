@@ -1,5 +1,6 @@
 db/
 input_files/
+*.pkl
 
 
 # Byte-compiled / optimized / DLL files

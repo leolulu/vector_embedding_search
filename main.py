@@ -24,8 +24,7 @@ class VectorEmbeddingSearch:
             os.environ[CommonConstants.openai_api_key] = CommonConstants.default_openai_api_key
 
     def set_proxy(self):
-        os.environ['HTTP_PROXY'] = CommonConstants.proxy_address
-        os.environ['HTTPS_PROXY'] = CommonConstants.proxy_address
+        os.environ['OPENAI_PROXY'] = CommonConstants.proxy_address
 
     def parse_mode(self, args):
         if args.add_mode:
