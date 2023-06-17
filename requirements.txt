@@ -2,3 +2,4 @@ langchain
 tqdm
 chromadb
 tiktoken
+itchat-uos==1.5.0.dev0
