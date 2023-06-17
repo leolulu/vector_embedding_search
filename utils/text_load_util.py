@@ -1,4 +1,5 @@
 import os
+import re
 from typing import Optional
 
 from constants.common import CommonConstants
@@ -13,11 +14,11 @@ class TextLoader:
         self.format_content()
 
     def load_content(self):
+        print(f"开始读取文件...")
         if not self.folder_path:
             self.folder_path = CommonConstants.input_files_location
         for i in os.listdir(self.folder_path):
             if os.path.splitext(i)[-1].lower() == '.txt':
-                print(f"处理输入文件：{i}")
                 with open(os.path.join(self.folder_path, i), 'r', encoding='utf-8') as f:
                     self.content.extend(f.read().split('\n'))
 
@@ -25,6 +26,8 @@ class TextLoader:
         self.content = [i.strip() for i in self.content]
         self.content = [i for i in self.content if i != '']
         self.content = [i for i in self.content if len(i) >= CommonConstants.content_min_length]
+        self.content = [i for i in self.content if not re.match(r"\d+年\d+月\d+日.*", i)]
+        self.content = list(set(self.content))
 
     def format_content(self):
         self.text = '\n'.join(self.content)

@@ -58,15 +58,18 @@ class VectorEmbeddingSearch:
 
     def embed_and_save_to_db(self):
         db = self._init_db()
+        embeddings = OpenAIEmbeddingEngine.embed_documents(self.content)
+        print("开始写入数据库...")
         db.add_batch(
             documents=self.content,
-            embeddings=OpenAIEmbeddingEngine.embed_documents(self.content)
+            embeddings=embeddings
         )
         db.client.persist()
 
     def add_mode_process(self):
         self.get_documents()
         self.embed_and_save_to_db()
+        print("处理完成...")
 
 
 if __name__ == '__main__':
