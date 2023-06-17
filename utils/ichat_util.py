@@ -1,3 +1,5 @@
+import traceback
+
 import itchat
 from itchat.content import TEXT
 
@@ -15,7 +17,7 @@ class IchatUtil:
                 try:
                     self.callback(msg)
                 except:
-                    msg.user.send(f"出错了！！！香蕉你个芭拉！")
+                    msg.user.send(f"出错了！！！香蕉你个芭拉！\n{traceback.format_exc()}")
 
 
         itchat.auto_login(enableCmdQR=2, hotReload=True)  # type: ignore
