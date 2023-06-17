@@ -1,6 +1,6 @@
 import os
 import re
-from typing import Optional
+from typing import Optional,List
 
 from constants.common import CommonConstants
 
@@ -8,7 +8,7 @@ from constants.common import CommonConstants
 class TextLoader:
     def __init__(self, folder_path: Optional[str] = None) -> None:
         self.folder_path = folder_path
-        self.content: list[str] = []
+        self.content: List[str] = []
         self.load_content()
         self.clean_content()
         self.format_content()

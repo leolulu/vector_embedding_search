@@ -1,3 +1,4 @@
+from typing import List
 from langchain.embeddings import OpenAIEmbeddings
 
 
@@ -10,13 +11,13 @@ class OpenAIEmbeddingEngine:
             OpenAIEmbeddingEngine.EMBEDDING_ENGINE = OpenAIEmbeddings()  # type: ignore
 
     @staticmethod
-    def embed_document(text) -> list[float]:
+    def embed_document(text) -> List[float]:
         OpenAIEmbeddingEngine._init_engine()
         doc_result = OpenAIEmbeddingEngine.EMBEDDING_ENGINE.embed_documents([text])
         return doc_result[0]
 
     @staticmethod
-    def embed_documents(text_list) -> list[list[float]]:
+    def embed_documents(text_list) -> List[List[float]]:
         OpenAIEmbeddingEngine._init_engine()
         print(f"开始处理embedding，输入大小: {len(text_list)}")
         doc_result = OpenAIEmbeddingEngine.EMBEDDING_ENGINE.embed_documents(text_list)

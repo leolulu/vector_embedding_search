@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 import chromadb
 from chromadb.config import Settings
 
@@ -26,7 +26,7 @@ class ChromaEngine:
             ids=[id]
         )
 
-    def add_batch(self, documents, embeddings, ids:Optional[list[str]]=None):
+    def add_batch(self, documents, embeddings, ids:Optional[List[str]]=None):
         if not ids:
             ids = [uuid.uuid4().hex for _ in range(len(documents))]
         self.collection.add(
